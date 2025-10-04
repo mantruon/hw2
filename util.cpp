@@ -13,6 +13,8 @@ std::string convToLower(std::string src)
 
 /** Complete the code to convert a string containing a rawWord
     to a set of words based on the criteria given in the assignment **/
+/* Complete the parseStringToWords() in util.cpp according to the specification given above for taking a string
+of many words and splitting them into individual keywords (split at punctuation, with at least 2 character words)*/
 std::set<std::string> parseStringToWords(string rawWords)
 {
 
