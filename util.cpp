@@ -18,14 +18,22 @@ of many words and splitting them into individual keywords (split at punctuation,
 std::set<std::string> parseStringToWords(string rawWords)
 {
 
-
-
-
-
-
-
-
-
+    string::iterator it;
+    set<string> keywords;
+    string temp;
+    // want to iterate through string
+    for (it = rawWords.begin(); it != rawWords.end(); it++) {
+        // want to split at punctuation
+        if (*it == " " || *it == "'" || *it == ".") {
+            if (temp.length() < 2) {
+                // want to clear string if keyword isn't sufficient length
+                temp.clear();
+            }
+        }
+        else if (*it != " ") {
+            
+        }
+    }
 
 }
 

@@ -5,3 +5,14 @@
 #include <set>
 #include <vector>
 #include <algorithm>
+
+using namespace std;
+
+class Clothing{
+	public:
+
+	private:
+
+};
+
+#endif
