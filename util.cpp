@@ -24,17 +24,24 @@ std::set<std::string> parseStringToWords(string rawWords)
     // want to iterate through string
     for (it = rawWords.begin(); it != rawWords.end(); it++) {
         // want to split at punctuation
-        if (*it == " " || *it == "'" || *it == ".") {
+        if (*it == " " || *it == "'" || *it == "." || *it != "&" || it == rawWords.end()) {
             if (temp.length() < 2) {
                 // want to clear string if keyword isn't sufficient length
                 temp.clear();
             }
+            // otherwise add the word to the set
+            else {
+                // want to double check and trim off excess whitespace
+                trim(temp);
+                keywords.insert(temp);
+            }
         }
-        else if (*it != " ") {
-            
+        else if (*it != " " || *it != "'" || *it != "." || *it != "&") {
+            // add char to string
+            temp += *it;
         }
     }
-
+    return keywords;
 }
 
 /**************************************************
