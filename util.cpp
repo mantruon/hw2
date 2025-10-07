@@ -24,7 +24,7 @@ std::set<std::string> parseStringToWords(string rawWords)
     // want to iterate through string
     for (it = rawWords.begin(); it != rawWords.end(); it++) {
         // want to split at punctuation
-        if (*it == " " || *it == "'" || *it == "." || *it != "&" || it == rawWords.end()) {
+        if (*it == ' ' || *it == '\'' || *it == '.' || *it != '&' || it == rawWords.end()) {
             if (temp.length() < 2) {
                 // want to clear string if keyword isn't sufficient length
                 temp.clear();
@@ -36,7 +36,7 @@ std::set<std::string> parseStringToWords(string rawWords)
                 keywords.insert(temp);
             }
         }
-        else if (*it != " " || *it != "'" || *it != "." || *it != "&") {
+        else if (*it == ' ' || *it == '\'' || *it == '.' || *it != '&') {
             // add char to string
             temp += *it;
         }
