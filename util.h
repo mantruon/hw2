@@ -16,15 +16,16 @@ std::set<T> setIntersection(std::set<T>& s1, std::set<T>& s2)
 
 // use find() function and find what intersects
 	typename std::set<T> interSet;
-	typename set<T>::iterator it1;
-	typename set<T>::iterator it2;
+	typename set<T>::iterator it;
 	// iterate through only one and use find()
 	// don't need to do a second one since if it intersects after iterating through one,
 	// it should be the same vice versa
-	for (it1 = s1.begin(); it != s1.end(); it++) {
-		
+	for (it = s1.begin(); it != s1.end(); it++) {
+		if (s2.find(*it) != s2.end()) {
+			interSet.insert(s2.find(*it));
+		}
 	}
-
+	return interSet;
 }
 template <typename T>
 std::set<T> setUnion(std::set<T>& s1, std::set<T>& s2)
@@ -32,10 +33,14 @@ std::set<T> setUnion(std::set<T>& s1, std::set<T>& s2)
 // combine both sets
 // iterate through both and add them to unionSet
 	typename std::set<T> unionSet;
-	typename std::set<T>::iterator it1;
-	typename std::set<T>::iterator it2;
-	while 
-
+	typename std::set<T>::iterator it;
+	for (it = s1.begin(); it != s1.end(); it++) {
+		unionSet.insert(*it);
+	}
+	for (it = s2.begin(); it != s2.end(); it++) {
+		unionSet.insert(*it);
+	}
+	return unionSet;
 }
 
 /***********************************************/
