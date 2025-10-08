@@ -6,7 +6,7 @@
 #include <vector>
 #include <algorithm>
 
-#include <product.h>
+#include "product.h"
 
 class Clothing : public Product {
 public:
