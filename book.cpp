@@ -15,3 +15,7 @@ Book::Book(const string category, const string name, double price, int qty, stri
 {
 	
 }
+
+set<string> keywords() {
+	
+}
