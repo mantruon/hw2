@@ -6,13 +6,14 @@
 #include <vector>
 #include <algorithm>
 
-using namespace std;
+#include <product.h>
 
-class Clothing{
-	public:
-
-	private:
-
+class Clothing : public Product {
+public:
+	Clothing(const std::string category, const std::string name, double price, int qty, std::string size, std::string brand);
+private:
+	std::string size_;
+	std::string brand_;
 };
 
 #endif

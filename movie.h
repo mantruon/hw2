@@ -6,13 +6,15 @@
 #include <vector>
 #include <algorithm>
 
-using namespace std;
+#include <product.h>
 
-class Movie{
-	public:
-
-	private:
-
+class Movie : public Product{
+public:
+	Movie(const std::string category, const std::string name, double price, int qty, std::string geenre, std::string rating);
+private:
+	std::string genre_;
+	// rating is like PG or rated R not as in stars
+	std::string rating_;		
 };
 
 #endif

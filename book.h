@@ -8,13 +8,12 @@
 
 #include <product.h>
 
-using namespace std;
-
-class Book{
-	public:
-
-	private:
-
+class Book : public Product {
+public:
+	Book(const std::string category, const std::string name, double price, int qty, std::string author, std::string ISBN);
+private:
+	std::string author_;
+	std::string ISBN_;
 };
 
 #endif

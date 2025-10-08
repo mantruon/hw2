@@ -32,7 +32,7 @@ std::set<std::string> parseStringToWords(string rawWords)
             // otherwise add the word to the set
             else {
                 // want to double check and trim off excess whitespace
-                trim(temp);
+                temp = trim(temp);
                 keywords.insert(temp);
             }
         }
