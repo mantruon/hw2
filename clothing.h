@@ -11,6 +11,7 @@
 class Clothing : public Product {
 public:
 	Clothing(const std::string category, const std::string name, double price, int qty, std::string size, std::string brand);
+	~Clothing();
 	std::set<std::string> keywords() const;
 	// display string has specific format in codio
 	std::string displayString() const;

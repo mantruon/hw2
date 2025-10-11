@@ -16,6 +16,10 @@ Clothing::Clothing(const string category, const string name, double price, int q
 	keywords_.insert(brand_);
 }
 
+Clothing::~Clothing() {
+	
+}
+
 set<string> Clothing::keywords() const {
 	return keywords_;
 }

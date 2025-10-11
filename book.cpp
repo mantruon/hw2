@@ -17,6 +17,10 @@ Book::Book(const string category, const string name, double price, int qty, stri
 	keywords_.insert(ISBN_);
 }
 
+Book::~Book() {
+
+}
+
 set<string> Book::keywords() const {
 
 	return keywords_;

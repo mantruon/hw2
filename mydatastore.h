@@ -12,32 +12,34 @@ It is here that you will implement the core functionality of your program: searc
 */
 class myDataStore {
 public:
-	virtual ~myDataStore() { }
+	myDataStore();
+	~myDataStore();
 
     /**
      * Adds a product to the data store
      */
-    virtual void addProduct(Product* p) = 0;
+    void addProduct(Product* p);
 
     /**
      * Adds a user to the data store
      */
-    virtual void addUser(User* u) = 0;
+    void addUser(User* u);
 
     /**
      * Performs a search of products whose keywords match the given "terms"
      *  type 0 = AND search (intersection of results for each term) while
      *  type 1 = OR search (union of results for each term)
      */
-    virtual std::vector<Product*> search(std::vector<std::string>& terms, int type) = 0;
+    std::vector<Product*> search(std::vector<std::string>& terms, int type);
 
     /**
      * Reproduce the database file from the current Products and User values
      */
-    virtual void dump(std::ostream& ofile) = 0;
+    void dump(std::ostream& ofile);
 protected:
 	// make a set of vectors for easy find()
 	std::set<User> users_;
+	std::set<Product> products_;
 	// then make a map of users and a vector containing their products
 	// want a vector since we know that duplicate items can exist >> not a set or map
 	std::map<User, std::vector<Product>> carts;

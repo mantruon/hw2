@@ -16,6 +16,10 @@ Movie::Movie(const string category, const string name, double price, int qty, st
 	keywords_.insert(genre_);
 }
 
+Movie::~Movie() {
+	
+}
+
 set<string> Movie::keywords() const {
 	return keywords_;
 }

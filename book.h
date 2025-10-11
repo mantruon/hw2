@@ -11,6 +11,7 @@
 class Book : public Product {
 public:
 	Book(const std::string category, const std::string name, double price, int qty, std::string author, std::string ISBN);
+	~Book();
 	// want to use parsing functions we wrote to return a set of keywords
 	std::set<std::string> keywords() const;
 	// display string has specific format in codio
