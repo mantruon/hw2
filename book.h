@@ -14,6 +14,11 @@ public:
 	// want to use parsing functions we wrote to return a set of keywords
 	std::set<std::string> keywords();
 	// display string has specific format in codio
+	std::string displayString(const Book& itself);
+	// dump product info
+	void dump(std::ostream& os);
+	std::string getAuthor() const;
+	std::string getISBN() const;
 private:
 	std::string author_;
 	std::string ISBN_;
