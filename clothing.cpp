@@ -13,18 +13,21 @@ Clothing::Clothing(const string category, const string name, double price, int q
     size_(size),
 	brand_(brand)
 {
-	
+	keywords_.insert(brand_);
 }
 
-set<string> Clothing::keywords() {
-	keywords_.insert(brand_);
+set<string> Clothing::keywords() const {
 	return keywords_;
 }
 
-string Clothing::displayString() {
+string Clothing::displayString() const{
 	string displayInfo;
 	displayInfo += name_ + "\nSize: " + size_ + " Brand:" + brand_ + "\n" + to_string(price_) + " " + to_string(qty_) + "left.\n";
 	return displayInfo;
+}
+
+void Clothing::dump(ostream& os) const {
+    os << category_ << "\n" << name_ << "\n" << price_ << "\n" << qty_ << size_ << "\n" << brand_ << endl;
 }
 
 std::string Clothing::getSize() const{

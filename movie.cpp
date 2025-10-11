@@ -13,18 +13,21 @@ Movie::Movie(const string category, const string name, double price, int qty, st
     genre_(genre),
 	rating_(rating)
 {
-	
+	keywords_.insert(genre_);
 }
 
-set<string> Movie::keywords(){
-	keywords_.insert(genre_);
+set<string> Movie::keywords() const {
 	return keywords_;
 }
 
-string Movie::displayString() {
+string Movie::displayString() const {
 	string displayInfo;
 	displayInfo += name_ + "\nGenre: " + genre_ + " Rating:" + rating_ + "\n" + to_string(price_) + " " + to_string(qty_) + "left.\n";
 	return displayInfo;
+}
+
+void Movie::dump(ostream& os) const {
+    os << category_ << "\n" << name_ << "\n" << price_ << "\n" << qty_ << genre_ << "\n" << rating_ << endl;
 }
 
 std::string Movie::getGenre() const{

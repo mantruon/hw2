@@ -11,11 +11,11 @@
 class Movie : public Product{
 public:
 	Movie(const std::string category, const std::string name, double price, int qty, std::string geenre, std::string rating);
-	std::set<std::string> keywords();
+	std::set<std::string> keywords() const;
 	// display string has specific format in codio
-	std::string displayString();
+	std::string displayString() const;
 	// dump product info
-	void dump(std::ostream& os);
+	void dump(std::ostream& os) const;
 	std::string getGenre() const;
 	std::string getRating() const;
 private:

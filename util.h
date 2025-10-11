@@ -16,7 +16,7 @@ std::set<T> setIntersection(std::set<T>& s1, std::set<T>& s2)
 
 // use find() function and find what intersects
 	typename std::set<T> interSet;
-	typename set<T>::iterator it;
+	typename std::set<T>::iterator it;
 	// iterate through only one and use find()
 	// don't need to do a second one since if it intersects after iterating through one,
 	// it should be the same vice versa
