@@ -13,7 +13,7 @@ public:
 	Clothing(const std::string category, const std::string name, double price, int qty, std::string size, std::string brand);
 	std::set<std::string> keywords();
 	// display string has specific format in codio
-	std::string displayString(const Clothing& itself);
+	std::string displayString();
 	// dump product info
 	void dump(std::ostream& os);
 	std::string getSize() const;
@@ -21,6 +21,7 @@ public:
 private:
 	std::string size_;
 	std::string brand_;
+	std::set<std::string> keywords_;
 };
 
 #endif

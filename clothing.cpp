@@ -17,18 +17,13 @@ Clothing::Clothing(const string category, const string name, double price, int q
 }
 
 set<string> Clothing::keywords() {
-	
+	keywords_.insert(brand_);
+	return keywords_;
 }
 
-string Clothing::displayString(const Clothing& itself) {
+string Clothing::displayString() {
 	string displayInfo;
-	displayInfo += itself.getName();
-	displayInfo += '\nSize: ';
-	displayInfo += itself.getSize();
-	displayInfo += ' Brand:';
-	displayInfo += itself.getBrand() + '\n';
-	displayInfo += to_string(itself.getPrice()) + ' ' + to_string(itself.getQty());
-	displayInfo += 'left.\n';
+	displayInfo += name_ + "\nSize: " + size_ + " Brand:" + brand_ + "\n" + to_string(price_) + " " + to_string(qty_) + "left.\n";
 	return displayInfo;
 }
 
