@@ -16,6 +16,8 @@ public:
 	std::string displayString(const Movie& itself);
 	// dump product info
 	void dump(std::ostream& os);
+	std::string getGenre() const;
+	std::string getRating() const;
 private:
 	std::string genre_;
 	// rating is like PG or rated R not as in stars

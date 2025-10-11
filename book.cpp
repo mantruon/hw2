@@ -24,7 +24,8 @@ string Book::displayString(const Book& itself) {
 	string displayInfo;
 	displayInfo += itself.getName();
 	displayInfo += '\nAuthor: ';
-	displayInfo += itself.getAuthor() + ' ';
+	displayInfo += itself.getAuthor();
+	displayInfo += ' ISBN:';
 	displayInfo += itself.getISBN() + '\n';
 	displayInfo += to_string(itself.getPrice()) + ' ' + to_string(itself.getQty());
 	displayInfo += 'left.\n';

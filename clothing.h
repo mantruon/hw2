@@ -16,6 +16,8 @@ public:
 	std::string displayString(const Clothing& itself);
 	// dump product info
 	void dump(std::ostream& os);
+	std::string getSize() const;
+	std::string getBrand() const;
 private:
 	std::string size_;
 	std::string brand_;

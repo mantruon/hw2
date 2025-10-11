@@ -15,3 +15,27 @@ Clothing::Clothing(const string category, const string name, double price, int q
 {
 	
 }
+
+set<string> Clothing::keywords() {
+	
+}
+
+string Clothing::displayString(const Clothing& itself) {
+	string displayInfo;
+	displayInfo += itself.getName();
+	displayInfo += '\nSize: ';
+	displayInfo += itself.getSize();
+	displayInfo += ' Brand:';
+	displayInfo += itself.getBrand() + '\n';
+	displayInfo += to_string(itself.getPrice()) + ' ' + to_string(itself.getQty());
+	displayInfo += 'left.\n';
+	return displayInfo;
+}
+
+std::string Clothing::getSize() const{
+	return size_;
+}
+
+std::string Clothing::getBrand() const{
+	return brand_;
+}

@@ -15,3 +15,27 @@ Movie::Movie(const string category, const string name, double price, int qty, st
 {
 	
 }
+
+set<string> Movie::keywords() {
+	
+}
+
+string Movie::displayString(const Movie& itself) {
+	string displayInfo;
+	displayInfo += itself.getName();
+	displayInfo += '\nGenre: ';
+	displayInfo += itself.getGenre();
+	displayInfo += ' Rating:';
+	displayInfo += itself.getRating() + '\n';
+	displayInfo += to_string(itself.getPrice()) + ' ' + to_string(itself.getQty());
+	displayInfo += 'left.\n';
+	return displayInfo;
+}
+
+std::string Movie::getGenre() const{
+	return genre_;
+}
+
+std::string Movie::getRating() const{
+	return rating_;
+}
