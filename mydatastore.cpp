@@ -21,6 +21,7 @@ void myDataStore::addProduct(Product* p) {
  */
 void myDataStore::addUser(User* u) {
 	users_.insert(*u);
+	// do we need to add credit amount and user type
 }
 
 /**
@@ -36,5 +37,5 @@ vector<Product*> myDataStore::search(vector<std::string>& terms, int type) {
  * Reproduce the database file from the current Products and User values
  */
 void myDataStore::dump(ostream& ofile) {
-
+	
 }

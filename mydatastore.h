@@ -43,8 +43,6 @@ protected:
 	// then make a map of users and a vector containing their products
 	// want a vector since we know that duplicate items can exist >> not a set or map
 	std::map<User, std::vector<Product>> carts;
-	double creditAmount_;
-	int userType_;
 };
 
 #endif
