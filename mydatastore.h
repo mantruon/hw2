@@ -41,7 +41,7 @@ public:
 protected:
 	// make a set of vectors for easy find()
 	std::set<User> users_;
-	std::set<Product> products_;
+	std::vector<Product> products_;
 	// then make a map of users and a vector containing their products
 	// want a vector since we know that duplicate items can exist >> not a set or map
 	std::map<User, std::vector<Product>> carts;

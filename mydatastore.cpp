@@ -11,7 +11,7 @@ myDataStore::myDataStore () {
 }
 
 void myDataStore::addProduct(Product* p) {
-	products_.insert(*p);
+	products_.push_back(*p);
 }
 
 /**
@@ -30,27 +30,41 @@ void myDataStore::addUser(User* u) {
 vector<Product*> myDataStore::search(vector<string>& terms, int type) {
 
 	vector<Product*> searchProducts;
-	set<Product>::iterator itProducts;
+	vector<Product>::iterator itProducts;
 	vector<string>::iterator it;
 	set<string> getKeywords;
+	for (it = terms.begin(); it != terms.end(); it++) {
+			getKeywords.insert(*it);		
+		}
 	if (type == 0) {
 		// do AND search 
 		// for the set of products, we want to go through all of them and look through their keywords
 		// if all keywords match, we add the product to the vector<product>
-		itProducts = products_.begin();
-		for (it = terms.begin(); it != terms.end(); it++) {
-			getKeywords = (*itProducts).keywords();
-
+		// turn terms into a set of keywords
+		// use setIntersect with keywords from products
+		// if setIntersect returns a set that is exactly the same as the keywords set
+		// add that product
+		
+		set<string> compareIntersection;
+		for (itProducts = products_.begin(); itProducts != products_.end(); itProducts++) {
+			compareIntersection = setIntersection(getKeywords, (*itProducts).keywords());
+			if (compareIntersection == getKeywords) {
+				searchProducts.push_back(&*itProducts);
+			}
 		}
+		// i think AND search is complete
 		
 	}
 	else if (type == 1) {
 		// do OR search
 		// only needs one of the keywords to work
-		itProducts = products_.begin();
-		for (it = terms.begin(); it != terms.end(); it++) {
-			getKeywords = (*itProducts).keywords();
-			getKeywords.find(*it);
+		set<string> compareIntersection;
+		for (itProducts = products_.begin(); itProducts!= products_.end(); itProducts++) {
+			// want to check if at least one intersects
+			compareIntersection = setIntersection(getKeywords, (*itProducts).keywords());
+			if (compareIntersection.size() >= 1) {
+				searchProducts.push_back(&*itProducts);
+			}
 		}
 	}
 
@@ -65,7 +79,7 @@ void myDataStore::dump(ostream& ofile) {
 	
 	ofile << "<products>\n";
 	// dump list of products first
-	set<Product>::iterator itProducts;
+	vector<Product>::iterator itProducts;
 	for (itProducts = products_.begin(); itProducts != products_.end(); itProducts++) {
 		(*itProducts).dump(ofile);
 	}
