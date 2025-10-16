@@ -12,7 +12,7 @@
 It is here that you will implement the core functionality of your program: searching, adding products and users, saving the database, etc.
 (For search you can use the setIntersection and setUnion) functions in util.h. This class is likely where you should store products and users in some fashion.
 */
-class myDataStore {
+class myDataStore : public DataStore {
 public:
 	myDataStore();
 	~myDataStore();
