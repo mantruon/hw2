@@ -31,6 +31,16 @@ void myDataStore::addUser(User* u) {
  */
 vector<Product*> myDataStore::search(vector<std::string>& terms, int type) {
 
+	vector<Product*> searchProducts;
+	if (type == 0) {
+		// do AND search 
+		
+	}
+	else if (type == 1) {
+		// do OR search
+		
+	}
+
 }
 
 /**
