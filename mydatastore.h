@@ -7,9 +7,6 @@
 
 #include "datastore.h"
 #include "util.h"
-#include "book.h"
-#include "clothing.h"
-#include "movie.h"
 
 /* Instructions:
 It is here that you will implement the core functionality of your program: searching, adding products and users, saving the database, etc.

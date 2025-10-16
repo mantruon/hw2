@@ -30,24 +30,27 @@ void myDataStore::addUser(User* u) {
 vector<Product*> myDataStore::search(vector<string>& terms, int type) {
 
 	vector<Product*> searchProducts;
-	set<Product*>::iterator itProducts;
+	set<Product>::iterator itProducts;
 	vector<string>::iterator it;
-	set<string> keywords;
+	set<string> getKeywords;
 	if (type == 0) {
 		// do AND search 
 		// for the set of products, we want to go through all of them and look through their keywords
-		// if we find a matching keyword, we add the product to the vector<product>
+		// if all keywords match, we add the product to the vector<product>
 		itProducts = products_.begin();
 		for (it = terms.begin(); it != terms.end(); it++) {
-			keywords = *itProducts.keywords();
-			
+			getKeywords = (*itProducts).keywords();
+
 		}
 		
 	}
 	else if (type == 1) {
 		// do OR search
+		// only needs one of the keywords to work
+		itProducts = products_.begin();
 		for (it = terms.begin(); it != terms.end(); it++) {
-			
+			getKeywords = (*itProducts).keywords();
+			getKeywords.find(*it);
 		}
 	}
 
@@ -60,16 +63,23 @@ vector<Product*> myDataStore::search(vector<string>& terms, int type) {
  */
 void myDataStore::dump(ostream& ofile) {
 	
+	ofile << "<products>\n";
 	// dump list of products first
 	set<Product>::iterator itProducts;
 	for (itProducts = products_.begin(); itProducts != products_.end(); itProducts++) {
 		(*itProducts).dump(ofile);
 	}
+	ofile << "</products>\n";
 
 	// then dump list of users
+	ofile << "<users>\n";
 	set<User>::iterator itUsers;
 	for (itUsers = users_.begin(); itUsers != users_.end(); itUsers++) {
-
+		// added const keyword to user.h and user.cpp to make function below work
+		// not sure why the user object was const even after looking through user.h and user.cpp
+		// casted away const keyword to use function
+		const_cast<User&>(*itUsers).dump(ofile);
 	}
+	ofile << "</users>\n";
 
 }
