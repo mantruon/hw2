@@ -11,14 +11,14 @@ myDataStore::myDataStore () {
 }
 
 void myDataStore::addProduct(Product* p) {
-	products_.push_back(*p);
+	products_.push_back(p);
 }
 
 /**
  * Adds a user to the data store
  */
 void myDataStore::addUser(User* u) {
-	users_.insert(*u);
+	users_.insert(u);
 	// do we need to add credit amount and user type
 }
 
@@ -30,7 +30,7 @@ void myDataStore::addUser(User* u) {
 vector<Product*> myDataStore::search(vector<string>& terms, int type) {
 
 	vector<Product*> searchProducts;
-	vector<Product>::iterator itProducts;
+	vector<Product*>::iterator itProducts;
 	vector<string>::iterator it;
 	set<string> getKeywords;
 	set<string> getProdKeywords;
@@ -48,10 +48,10 @@ vector<Product*> myDataStore::search(vector<string>& terms, int type) {
 		
 		set<string> compareIntersection;
 		for (itProducts = products_.begin(); itProducts != products_.end(); itProducts++) {
-			getProdKeywords = (*itProducts).keywords();
+			getProdKeywords = (**itProducts).keywords();
 			compareIntersection = setIntersection(getKeywords, getProdKeywords);
 			if (compareIntersection == getKeywords) {
-				searchProducts.push_back(&*itProducts);
+				searchProducts.push_back(*itProducts);
 			}
 		}
 		// i think AND search is complete
@@ -62,11 +62,11 @@ vector<Product*> myDataStore::search(vector<string>& terms, int type) {
 		// only needs one of the keywords to work
 		set<string> compareIntersection;
 		for (itProducts = products_.begin(); itProducts!= products_.end(); itProducts++) {
-			getProdKeywords = (*itProducts).keywords();
+			getProdKeywords = (**itProducts).keywords();
 			// want to check if at least one intersects
 			compareIntersection = setIntersection(getKeywords, getProdKeywords);
 			if (compareIntersection.size() >= 1) {
-				searchProducts.push_back(&*itProducts);
+				searchProducts.push_back(*itProducts);
 			}
 		}
 	}
@@ -82,20 +82,20 @@ void myDataStore::dump(ostream& ofile) {
 	
 	ofile << "<products>\n";
 	// dump list of products first
-	vector<Product>::iterator itProducts;
+	vector<Product*>::iterator itProducts;
 	for (itProducts = products_.begin(); itProducts != products_.end(); itProducts++) {
-		(*itProducts).dump(ofile);
+		(**itProducts).dump(ofile);
 	}
 	ofile << "</products>\n";
 
 	// then dump list of users
 	ofile << "<users>\n";
-	set<User>::iterator itUsers;
+	set<User*>::iterator itUsers;
 	for (itUsers = users_.begin(); itUsers != users_.end(); itUsers++) {
 		// added const keyword to user.h and user.cpp to make function below work
 		// not sure why the user object was const even after looking through user.h and user.cpp
 		// casted away const keyword to use function
-		const_cast<User&>(*itUsers).dump(ofile);
+		(**itUsers).dump(ofile);
 	}
 	ofile << "</users>\n";
 
