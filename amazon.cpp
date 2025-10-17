@@ -114,7 +114,7 @@ int main(int argc, char* argv[])
                     cout << "Invalid request" << endl;
                     break;
                 }
-                else if (hitNo >= hits.size()) {
+                else if (hitNo >= (int) hits.size()) {
                     cout << "Invalid request" << endl;
                     break;
                 }
