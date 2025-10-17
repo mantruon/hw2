@@ -100,3 +100,14 @@ void myDataStore::dump(ostream& ofile) {
 	ofile << "</users>\n";
 
 }
+
+void myDataStore::addToCart(User* u, Product* p) {
+	vector<Product*> tempCart;
+	if (carts_.find(u) == carts_.end()) {
+		tempCart.push_back(p);
+		carts_.insert({u, tempCart});
+	}
+	else if (carts_.find(u) != carts_.end()) {
+		carts_[u].push_back(p);
+	}
+}

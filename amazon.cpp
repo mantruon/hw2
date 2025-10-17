@@ -99,9 +99,33 @@ int main(int argc, char* argv[])
                 done = true;
             }
 	    /* Add support for other commands here */
+            // want ADDCART
+            else if (cmd == "ADD") {
+                string username;
+                int hitNo;
+                set<User*>::iterator findUser;
+                ss >> username;
+                ss >> hitNo;
+                for (findUser = ds.users_.begin(); findUser != ds.users_.end(); findUser++) {
+                    if (username == (*findUser)->getName()) {
+                       ds.addToCart(*findUser, ds.products_[hitNo]);
+                    }
+                }
+            }    
+            // want VIEWCART
+            // find mapping using username and vector products
+            // display vector products
+            else if (cmd == "VIEWCART") {
+                string username;
+            }
+            // want BUYCART
+            // find vector products
+            // check pricing and if user has enough money
+            // also check if item is in stock
+            else if (cmd == "BUYCART") {
+                string username;
 
-
-
+            }
 
             else {
                 cout << "Unknown command" << endl;
