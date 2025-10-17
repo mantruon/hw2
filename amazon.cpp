@@ -109,7 +109,7 @@ int main(int argc, char* argv[])
                     cout << "Invalid request" << endl;
                 }
                 ss >> hitNo;
-                if (ss >> hitNo && stoi(hitNo) < hits.size()) {
+                if (ss >> hitNo && stoul(hitNo) > hits.size()) {
                     for (findUser = ds.users_.begin(); findUser != ds.users_.end(); findUser++) {
                         if (username == (*findUser)->getName()) {
                             ds.addToCart(*findUser, hits[stoi(hitNo)-1]);
