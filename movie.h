@@ -7,7 +7,7 @@
 #include <algorithm>
 
 #include "product.h"
-
+#include "util.h"
 class Movie : public Product{
 public:
 	Movie(const std::string category, const std::string name, double price, int qty, std::string geenre, std::string rating);

@@ -12,9 +12,23 @@ Book::Book(const string category, const string name, double price, int qty, stri
 	:Product(category, name, price, qty),
     author_(author),
 	ISBN_(ISBN)
-{
-	keywords_.insert(author_);
-	keywords_.insert(ISBN_);
+{	
+	
+	set<string>::iterator it;
+	set<string> tempKey;
+	tempKey = parseStringToWords(name);
+	for (it = tempKey.begin(); it != tempKey.end(); it ++) {
+		keywords_.insert(*it);
+	}
+	tempKey = parseStringToWords(author);
+	for (it = tempKey.begin(); it != tempKey.end(); it ++) {
+		keywords_.insert(*it);
+	}
+	keywords_.insert(ISBN);
+	// set<string>::iterator it;
+	// for (it = keywords_.begin(); it != keywords_.end(); it ++) {
+	// 	cout << *it << endl;
+	// }
 }
 
 Book::~Book() {

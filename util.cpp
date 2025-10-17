@@ -17,32 +17,59 @@ of many words and splitting them into individual keywords (split at punctuation,
 std::set<std::string> parseStringToWords(std::string rawWords)
 {
 
-    std::string::iterator it;
+    // std::string::iterator it;
     std::set<std::string> keywords;
     std::string temp;
-    char tempChar;
+    std::string temptemp;
+    // char tempChar;
     // want to iterate through string
-    for (it = rawWords.begin(); it != rawWords.end(); it++) {
-        // want to split at punctuation
-        // ' ' is for C++ strings and " " is for C
-        if (*it == ' ' || *it == '\'' || *it == '.' || *it != '&' || it == rawWords.end()) {
-            if (temp.length() < 2) {
-                // want to clear string if keyword isn't sufficient length
-                temp.clear();
+    // std::cout << "Is this even working?\n";
+
+    // want to split at punctuation
+    // ' ' is for C strings and " " is for C++
+    
+    std::stringstream stringStream(rawWords);
+    while (std::getline(stringStream, temp)) {
+        size_t prev = 0;
+        size_t pos;
+        // found a similar way to parse string
+        while ((pos = temp.find_first_of(" !@#$%^&*()-_+=:", prev)) != std::string::npos) {
+            if (pos > prev) {
+                temptemp = convToLower(temp.substr(prev, pos-prev));
+                keywords.insert(temptemp);
             }
-            // otherwise add the word to the set
-            else {
-                // want to double check and trim off excess whitespace
-                temp = trim(temp);
-                keywords.insert(temp);
-            }
+            prev = pos + 1;
         }
-        else if (*it == ' ' || *it == '\'' || *it == '.' || *it != '&') {
-            // add char to string
-            tempChar = tolower(*it);
-            temp += tempChar;
+        if (prev < temp.length()) {
+            temptemp = convToLower(temp.substr(prev, std::string::npos));
+            keywords.insert(temptemp);
         }
     }
+
+    // for (it = rawWords.begin(); it != rawWords.end(); it++) {
+
+        // std::cout << *it << std::endl;
+
+        // if (*it != ' ' && *it != '\'') {
+        //     tempChar = *it;
+        //     temp += tempChar;
+        // }
+        
+        // if (*it == ' ' || *it == '\'') {
+        //     if (temp.length() < 2) {
+        //             // want to clear string if keyword isn't sufficient length
+        //             temp.clear();
+        //     }
+
+        //     // otherwise add the word to the set
+        //     // want to double check and trim off excess whitespace
+        //     temp = convToLower(temp);
+        //     // std::cout << temp << std::endl;
+        //     keywords.insert(temp);
+        //     std::cout << temp << "\n";
+        //     temp.clear();
+        // }
+    // }
     return keywords;
 }
 

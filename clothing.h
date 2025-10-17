@@ -7,6 +7,7 @@
 #include <algorithm>
 
 #include "product.h"
+#include "util.h"
 
 class Clothing : public Product {
 public:

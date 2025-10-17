@@ -13,7 +13,16 @@ Clothing::Clothing(const string category, const string name, double price, int q
     size_(size),
 	brand_(brand)
 {
-	keywords_.insert(brand_);
+	set<string>::iterator it;
+	set<string> tempKey;
+	tempKey = parseStringToWords(name);
+	for (it = tempKey.begin(); it != tempKey.end(); it ++) {
+		keywords_.insert(*it);
+	}
+	tempKey = parseStringToWords(brand);
+	for (it = tempKey.begin(); it != tempKey.end(); it ++) {
+		keywords_.insert(*it);
+	}
 }
 
 Clothing::~Clothing() {

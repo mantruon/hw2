@@ -13,7 +13,16 @@ Movie::Movie(const string category, const string name, double price, int qty, st
     genre_(genre),
 	rating_(rating)
 {
-	keywords_.insert(genre_);
+	set<string>::iterator it;
+	set<string> tempKey;
+	tempKey = parseStringToWords(name);
+	for (it = tempKey.begin(); it != tempKey.end(); it ++) {
+		keywords_.insert(*it);
+	}
+	tempKey = parseStringToWords(genre);
+	for (it = tempKey.begin(); it != tempKey.end(); it ++) {
+		keywords_.insert(*it);
+	}
 }
 
 Movie::~Movie() {
