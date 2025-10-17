@@ -10,6 +10,10 @@ myDataStore::myDataStore () {
 
 }
 
+myDataStore::~myDataStore () {
+
+}
+
 void myDataStore::addProduct(Product* p) {
 	products_.push_back(p);
 }
