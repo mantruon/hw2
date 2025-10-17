@@ -22,7 +22,7 @@ std::set<T> setIntersection(std::set<T>& s1, std::set<T>& s2)
 	// it should be the same vice versa
 	for (it = s1.begin(); it != s1.end(); it++) {
 		if (s2.find(*it) != s2.end()) {
-			interSet.insert(s2.find(*it));
+			interSet.insert(*s2.find(*it));
 		}
 	}
 	return interSet;
