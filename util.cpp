@@ -4,7 +4,6 @@
 #include <algorithm>
 #include "util.h"
 
-using namespace std;
 std::string convToLower(std::string src)
 {
     std::transform(src.begin(), src.end(), src.begin(), ::tolower);
@@ -15,12 +14,13 @@ std::string convToLower(std::string src)
     to a set of words based on the criteria given in the assignment **/
 /* Complete the parseStringToWords() in util.cpp according to the specification given above for taking a string
 of many words and splitting them into individual keywords (split at punctuation, with at least 2 character words)*/
-std::set<std::string> parseStringToWords(string rawWords)
+std::set<std::string> parseStringToWords(std::string rawWords)
 {
 
-    string::iterator it;
-    set<string> keywords;
-    string temp;
+    std::string::iterator it;
+    std::set<std::string> keywords;
+    std::string temp;
+    char tempChar;
     // want to iterate through string
     for (it = rawWords.begin(); it != rawWords.end(); it++) {
         // want to split at punctuation
@@ -39,7 +39,8 @@ std::set<std::string> parseStringToWords(string rawWords)
         }
         else if (*it == ' ' || *it == '\'' || *it == '.' || *it != '&') {
             // add char to string
-            temp += *it;
+            tempChar = tolower(*it);
+            temp += tempChar;
         }
     }
     return keywords;

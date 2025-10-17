@@ -33,6 +33,7 @@ vector<Product*> myDataStore::search(vector<string>& terms, int type) {
 	vector<Product>::iterator itProducts;
 	vector<string>::iterator it;
 	set<string> getKeywords;
+	set<string> getProdKeywords;
 	for (it = terms.begin(); it != terms.end(); it++) {
 			getKeywords.insert(*it);		
 		}
@@ -47,7 +48,8 @@ vector<Product*> myDataStore::search(vector<string>& terms, int type) {
 		
 		set<string> compareIntersection;
 		for (itProducts = products_.begin(); itProducts != products_.end(); itProducts++) {
-			compareIntersection = setIntersection(getKeywords, (*itProducts).keywords());
+			getProdKeywords = (*itProducts).keywords();
+			compareIntersection = setIntersection(getKeywords, getProdKeywords);
 			if (compareIntersection == getKeywords) {
 				searchProducts.push_back(&*itProducts);
 			}
@@ -60,8 +62,9 @@ vector<Product*> myDataStore::search(vector<string>& terms, int type) {
 		// only needs one of the keywords to work
 		set<string> compareIntersection;
 		for (itProducts = products_.begin(); itProducts!= products_.end(); itProducts++) {
+			getProdKeywords = (*itProducts).keywords();
 			// want to check if at least one intersects
-			compareIntersection = setIntersection(getKeywords, (*itProducts).keywords());
+			compareIntersection = setIntersection(getKeywords, getProdKeywords);
 			if (compareIntersection.size() >= 1) {
 				searchProducts.push_back(&*itProducts);
 			}
