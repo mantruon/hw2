@@ -120,7 +120,7 @@ int main(int argc, char* argv[])
                 }
                 for (findUser = ds.users_.begin(); findUser != ds.users_.end(); findUser++) {
                     if (username == (*findUser)->getName()) {
-                       ds.addToCart(*findUser, hits[hitNo]);
+                       ds.addToCart(*findUser, hits[hitNo-1]);
                        break;
                     }
                 }
