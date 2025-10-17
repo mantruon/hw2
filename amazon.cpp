@@ -160,6 +160,15 @@ int main(int argc, char* argv[])
                     }
                 }
             }
+            
+            // want to support QUIT
+            else if (cmd == "QUIT") {
+                string fileName;
+                ss >> fileName;
+                ofstream outputFile(fileName);
+                ds.dump(outputFile);
+                return 0;
+            }
 
             else {
                 cout << "Unknown command" << endl;

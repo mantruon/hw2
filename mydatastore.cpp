@@ -118,9 +118,45 @@ void myDataStore::viewCart(User* u) {
 	for (int i = 0; i < temp.size(); i++) {
 		cout << "Item " << itemNo << endl;
 		temp[i]->displayString();
+		itemNo++;
 	}
 }
 
+// want BUYCART
+// find vector products
+// check pricing and if user has enough money
+// also check if item is in stock
+// make sure to deduct money from user
+// also deduct quantity from products using subtractQty()
+// also remove product from cart as well
+// if item is not in stock or user does not have enough money, leave it in cart and move onto next product
 void myDataStore::buyCart(User* u) {
+	double userBalance = u->getBalance();
+	double productPrice;
+
+	// for (int i = 0; i < carts_[u].size(); i++) {
+	// 	// want to check if we have enough money and if the quantity is greater than one
+	// 	productPrice = carts_[u][i]->getPrice();
+	// 	if (userBalance >= carts_[u][i]->getPrice() && carts_[u][i]->getQty() >= 1) {
+	// 		u->deductAmount(productPrice);
+	// 		carts_[u][i]->subtractQty(1);
+	// 		carts_[u].erase(carts_[u].begin() + i);
+	// 		i--;
+
+	// 	}
+	// }
+	
+	vector<Product*>::iterator it = carts_[u].begin();
+	while (it != carts_[u].end()) {
+		productPrice = (*it)->getPrice();
+		if (userBalance >= (*it)->getPrice() && (*it)->getQty() >= 1) {
+			u->deductAmount(productPrice);
+			(*it)->subtractQty(1);
+			carts_[u].erase(it);
+		}
+		else {
+			it++;
+		}
+	}
 
 }

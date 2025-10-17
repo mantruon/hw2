@@ -26,7 +26,7 @@ set<string> Movie::keywords() const {
 
 string Movie::displayString() const {
 	string displayInfo;
-	displayInfo += name_ + "\nGenre: " + genre_ + " Rating:" + rating_ + "\n" + to_string(price_) + " " + to_string(qty_) + "left.\n";
+	displayInfo += name_ + "\nGenre: " + genre_ + " Rating:" + rating_ + "\n" + to_string(price_) + " " + to_string(qty_) + " left.\n";
 	return displayInfo;
 }
 

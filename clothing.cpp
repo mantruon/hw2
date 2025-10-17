@@ -26,7 +26,7 @@ set<string> Clothing::keywords() const {
 
 string Clothing::displayString() const{
 	string displayInfo;
-	displayInfo += name_ + "\nSize: " + size_ + " Brand:" + brand_ + "\n" + to_string(price_) + " " + to_string(qty_) + "left.\n";
+	displayInfo += name_ + "\nSize: " + size_ + " Brand:" + brand_ + "\n" + to_string(price_) + " " + to_string(qty_) + " left.\n";
 	return displayInfo;
 }
 

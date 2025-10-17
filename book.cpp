@@ -28,7 +28,7 @@ set<string> Book::keywords() const {
 
 string Book::displayString() const {
 	string displayInfo;
-	displayInfo += name_ + "\nAuthor: " + author_ + " ISBN:" + ISBN_ + "\n" + to_string(price_) + " " + to_string(qty_) + "left.\n";
+	displayInfo += name_ + "\nAuthor: " + author_ + " ISBN:" + ISBN_ + "\n" + to_string(price_) + " " + to_string(qty_) + " left.\n";
 	return displayInfo;
 }
 
