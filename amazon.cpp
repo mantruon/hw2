@@ -107,17 +107,22 @@ int main(int argc, char* argv[])
                 ss >> username;
                 if (ss.fail()) {
                     cout << "Invalid request" << endl;
+                    break;
                 }
                 ss >> hitNo;
-                if (ss >> hitNo && stoul(hitNo) > hits.size()) {
-                    for (findUser = ds.users_.begin(); findUser != ds.users_.end(); findUser++) {
-                        if (username == (*findUser)->getName()) {
-                            ds.addToCart(*findUser, hits[stoi(hitNo)-1]);
-                        }
-                    }
-                }
-                else {
+                if (ss.fail()) {
                     cout << "Invalid request" << endl;
+                    break;
+                }
+                else if (stoi(hitNo) >= (int) hits.size()) {
+                    cout << "Invalid request" << endl;
+                    break;
+                }
+                for (findUser = ds.users_.begin(); findUser != ds.users_.end(); findUser++) {
+                    if (username == (*findUser)->getName()) {
+                       ds.addToCart(*findUser, hits[stoi(hitNo)-1]);
+                       break;
+                    }
                 }
             }    
             // want VIEWCART
@@ -128,13 +133,12 @@ int main(int argc, char* argv[])
                 ss >> username;
                 if (ss.fail()) {
                     cout << "Invalid request" << endl;
+                    break;
                 }
-                else {
-                    set<User*>::iterator findUser;
-                    for (findUser = ds.users_.begin(); findUser != ds.users_.end(); findUser++) {
-                        if (username == (*findUser)->getName()) {
-                            ds.viewCart(*findUser);
-                        }
+                set<User*>::iterator findUser;
+                for (findUser = ds.users_.begin(); findUser != ds.users_.end(); findUser++) {
+                    if (username == (*findUser)->getName()) {
+                       ds.viewCart(*findUser);
                     }
                 }
             }
@@ -147,13 +151,12 @@ int main(int argc, char* argv[])
                 ss >> username;
                 if (ss.fail()) {
                     cout << "Invalid request" << endl;
+                    break;
                 }
-                else {
-                    set<User*>::iterator findUser;
-                    for (findUser = ds.users_.begin(); findUser != ds.users_.end(); findUser++) {
-                        if (username == (*findUser)->getName()) {
-                        ds.buyCart(*findUser);
-                        }
+                set<User*>::iterator findUser;
+                for (findUser = ds.users_.begin(); findUser != ds.users_.end(); findUser++) {
+                    if (username == (*findUser)->getName()) {
+                       ds.buyCart(*findUser);
                     }
                 }
             }
