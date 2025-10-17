@@ -111,3 +111,16 @@ void myDataStore::addToCart(User* u, Product* p) {
 		carts_[u].push_back(p);
 	}
 }
+
+void myDataStore::viewCart(User* u) {
+	int itemNo = 1;
+	vector<Product*> temp = carts_[u];
+	for (int i = 0; i < temp.size(); i++) {
+		cout << "Item " << itemNo << endl;
+		temp[i]->displayString();
+	}
+}
+
+void myDataStore::buyCart(User* u) {
+
+}

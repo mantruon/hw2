@@ -40,6 +40,8 @@ public:
     void dump(std::ostream& ofile);
 
     void addToCart(User* u, Product* p);
+    void viewCart(User* u);
+    void buyCart(User* u);
 
 	// make a set of vectors for easy find()
 	std::set<User*> users_;

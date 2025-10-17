@@ -105,10 +105,23 @@ int main(int argc, char* argv[])
                 int hitNo;
                 set<User*>::iterator findUser;
                 ss >> username;
+                if (ss.fail()) {
+                    cout << "Invalid request" << endl;
+                    break;
+                }
                 ss >> hitNo;
+                if (ss.fail()) {
+                    cout << "Invalid request" << endl;
+                    break;
+                }
+                else if (hitNo >= hits.size()) {
+                    cout << "Invalid request" << endl;
+                    break;
+                }
                 for (findUser = ds.users_.begin(); findUser != ds.users_.end(); findUser++) {
                     if (username == (*findUser)->getName()) {
-                       ds.addToCart(*findUser, ds.products_[hitNo]);
+                       ds.addToCart(*findUser, hits[hitNo]);
+                       break;
                     }
                 }
             }    
@@ -117,6 +130,17 @@ int main(int argc, char* argv[])
             // display vector products
             else if (cmd == "VIEWCART") {
                 string username;
+                ss >> username;
+                if (ss.fail()) {
+                    cout << "Invalid request" << endl;
+                    break;
+                }
+                set<User*>::iterator findUser;
+                for (findUser = ds.users_.begin(); findUser != ds.users_.end(); findUser++) {
+                    if (username == (*findUser)->getName()) {
+                       ds.viewCart(*findUser);
+                    }
+                }
             }
             // want BUYCART
             // find vector products
@@ -124,7 +148,17 @@ int main(int argc, char* argv[])
             // also check if item is in stock
             else if (cmd == "BUYCART") {
                 string username;
-
+                ss >> username;
+                if (ss.fail()) {
+                    cout << "Invalid request" << endl;
+                    break;
+                }
+                set<User*>::iterator findUser;
+                for (findUser = ds.users_.begin(); findUser != ds.users_.end(); findUser++) {
+                    if (username == (*findUser)->getName()) {
+                       ds.buyCart(*findUser);
+                    }
+                }
             }
 
             else {
