@@ -1,3 +1,7 @@
 *.o
 amazon
+<<<<<<< HEAD
 hw2_tests
+=======
+hw2_tests
+>>>>>>> 9a9ce65d0235f1e3f319bd21f72dc14be01eda08
