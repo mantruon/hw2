@@ -33,9 +33,12 @@ std::set<std::string> parseStringToWords(std::string rawWords)
         size_t prev = 0;
         size_t pos;
         // found a similar way to parse string
-        while ((pos = temp.find_first_of(" .,!@#$%^&*()-_+=:", prev)) != std::string::npos) {
+        while ((pos = temp.find_first_of(" .,!@#$%^&*()-_+=:'", prev)) != std::string::npos) {
             if (pos > prev) {
                 temptemp = convToLower(temp.substr(prev, pos-prev));
+                if (temptemp.length() < 2) {
+                    temptemp.clear();
+                }
                 keywords.insert(temptemp);
             }
             prev = pos + 1;
